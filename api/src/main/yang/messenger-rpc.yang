@@ -1,0 +1,36 @@
+module messenger-rpc {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:messenger:rpc";
+    prefix "messenger-rpc";
+
+    revision "2015-01-05" {
+        description "Initial revision of messenger RPC model";
+    }
+
+    import messenger { prefix "messenger"; revision-date "2015-01-05"; }
+
+    rpc send-message {
+        description
+            "Send a message";
+        input {
+            uses messenger:message;
+        }
+        output {
+            leaf message-id {
+                type string;
+            }
+        }
+    }
+
+    rpc get-last-message-datetime {
+        description
+            "Get datetime of last message";
+        output {
+            leaf message-datetime {
+                type string;
+            }
+        }
+    }
+}
+
+
